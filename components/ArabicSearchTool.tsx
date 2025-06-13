@@ -30,6 +30,10 @@ export default function ArabicSearchTool() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userMessage: word }),
       });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
       setWordData(JSON.parse(data.reply));
     } catch (e) {
@@ -46,9 +50,7 @@ export default function ArabicSearchTool() {
           placeholder="Search"
           name="word"
           lang="ar"
-          className={`searchInput ${
-            searchError && "border-2 border-red"
-          }`}
+          className={`searchInput ${searchError && "border-2 border-red"}`}
         />
         <button
           type="submit"
