@@ -1,13 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import ModelClient, { isUnexpected } from "@azure-rest/ai-inference";
 import { AzureKeyCredential } from "@azure/core-auth";
+import { SYSTEM_PROMPTS } from "@/app/lib/prompt";
 
 const token = process.env.GITHUB_TOKEN;
 const endpoint = "https://models.github.ai/inference";
 const model = "openai/gpt-4.1";
 
 export async function POST(req: NextRequest) {
-  const { userMessage } = await req.json();
+  const { userMessage,direction } = await req.json();
+  if(!userMessage || !direction) {
+ console.error("Missing userMessage or direction.");
+  }
 
   if (!token) {
     throw new Error("Missing GITHUB_TOKEN in environment variables.");
@@ -15,38 +19,15 @@ export async function POST(req: NextRequest) {
 
   const client = ModelClient(endpoint, new AzureKeyCredential(token!));
 
+   const systemPrompt = SYSTEM_PROMPTS[direction as keyof typeof SYSTEM_PROMPTS];
+
   try {
     const response = await client.path("/chat/completions").post({
       body: {
         messages: [
           {
             role: "system",
-            content: `You're an Arabic-English dictionary bot. For each Arabic word, return:
-- translation
-- gender(masculine, feminine, or neutral)
-- root (in Arabic)
-- root meaning (in English)
-- type (Arabic: اِسم/فعل/حرف and English: noun/verb/particle)
-- word with ḥarakāt
-- 2 example sentences (Arabic + English)
-
-Respond ONLY in this JSON:
-
-{
-  "searchWithHarakat": "...",
-  "translation": "...",
-  "gender": "...",
-  "root": "...",
-  "rootExplanation": "...",
-  "type": {
-    "arabic": "...",
-    "english": "..."
-  },
-  "examples": [
-    { "arabic": "...", "english": "..." },
-    { "arabic": "...", "english": "..." }
-  ]
-}`,
+            content: systemPrompt,
           },
           { role: "user", content: userMessage },
         ],

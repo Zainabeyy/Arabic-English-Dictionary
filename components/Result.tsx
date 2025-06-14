@@ -1,4 +1,4 @@
-import { WordDataType } from "@/app/types/type";
+import { WordDataType } from "@/app/lib/types/type";
 import React from "react";
 
 export default function Result({ wordData }: { wordData: WordDataType }) {
@@ -43,6 +43,10 @@ export default function Result({ wordData }: { wordData: WordDataType }) {
         <div className="text-lg">
           <p className="text-gray3">Root Word Explanation:</p>
           <p>{wordData.rootExplanation}</p>
+        </div>
+        <div className="text-xl mt-4">
+          <p className="text-gray3 text-lg">Word with same Root:</p>
+          <p className="text-purple">{wordData.relatedWords.join(", ")}</p>
         </div>
       </div>
 

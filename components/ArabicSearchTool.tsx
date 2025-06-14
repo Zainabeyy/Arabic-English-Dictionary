@@ -3,7 +3,8 @@
 import { Search } from "lucide-react";
 import React from "react";
 import Result from "./Result";
-import { WordDataType } from "@/app/types/type";
+import { WordDataType } from "@/app/lib/types/type";
+import Image from "next/image";
 
 export default function ArabicSearchTool() {
   const [wordData, setWordData] = React.useState<WordDataType | null>(null);
@@ -25,10 +26,10 @@ export default function ArabicSearchTool() {
     setSearchError("");
     setLoading(true);
     try {
-      const response = await fetch("api/ask", {
+      const response = await fetch("api/dictionary", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userMessage: word }),
+        body: JSON.stringify({ userMessage: word, direction: "arToEn" }),
       });
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -50,6 +51,7 @@ export default function ArabicSearchTool() {
           placeholder="Search"
           name="word"
           lang="ar"
+          autoComplete="off"
           className={`searchInput ${searchError && "border-2 border-red"}`}
         />
         <button
@@ -62,8 +64,8 @@ export default function ArabicSearchTool() {
       <p className="text-red mt-3 ml-2">{searchError}</p>
 
       {loading ? (
-        <div>
-          <p>Loading...</p>
+        <div className="flex justify-center items-center w-full h-80">
+          <Image src="/Spinner.gif" alt="loading" width={100} height={100} />
         </div>
       ) : word && wordData ? (
         <Result wordData={wordData} />

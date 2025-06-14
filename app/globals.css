@@ -39,6 +39,11 @@ input {
   @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-purple;
 }
 
+input:-webkit-autofill {
+  box-shadow: none !important;
+}
+
+
 .fontList li {
   @apply px-4 py-3 min-w-44 hover:text-purple cursor-pointer bg-white dark:bg-dark4 focus:outline-none focus-visible:text-purple;
 }
