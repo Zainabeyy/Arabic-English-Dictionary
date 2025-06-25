@@ -2,13 +2,17 @@
 
 import { Search } from "lucide-react";
 import React from "react";
-import Result from "./Result";
-import { WordDataType } from "@/app/lib/types/type";
+import ArtoEnResult from "./ArtoEnResult";
+import { ArtoEnType, EnToArType } from "@/app/lib/types/type";
 import Image from "next/image";
+import EntoArResult from "./EntoArResult";
 
 export default function ArabicSearchTool() {
-  const [wordData, setWordData] = React.useState<WordDataType | null>(null);
+  const [wordData, setWordData] = React.useState<
+    ArtoEnType | EnToArType | null
+  >(null);
   const [word, setWord] = React.useState("");
+  const [direction, setDirection] = React.useState("arToEn");
   const [searchError, setSearchError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -25,11 +29,15 @@ export default function ArabicSearchTool() {
     }
     setSearchError("");
     setLoading(true);
+
+    const isArabic = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(word);
+    const detectedDirection = isArabic ? "arToEn" : "enToAr";
+    setDirection(detectedDirection);
     try {
       const response = await fetch("api/dictionary", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userMessage: word, direction: "arToEn" }),
+        body: JSON.stringify({ userMessage: word, direction: detectedDirection }),
       });
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -43,23 +51,28 @@ export default function ArabicSearchTool() {
       setLoading(false);
     }
   }
+
   return (
     <div>
-      <form onSubmit={handleSubmit} className="mt-12 relative">
+      <form
+        onSubmit={handleSubmit}
+        className={`mt-12 flex rounded-2xl overflow-hidden bg-gray1 dark:bg-dark3 ${
+          searchError && "ring-2 ring-red"
+        }`}
+      >
+        <button type="submit" className="ml-4">
+          <Search size={28} />
+        </button>
         <input
           type="text"
-          placeholder="Search"
+          aria-label="Search Arabic or English word"
+          placeholder="Search Arabic or English word"
           name="word"
           lang="ar"
           autoComplete="off"
-          className={`searchInput ${searchError && "border-2 border-red"}`}
+          dir="auto"
+          className="searchInput"
         />
-        <button
-          type="submit"
-          className="absolute right-5 top-1/2 -translate-y-1/2"
-        >
-          <Search size={28} />
-        </button>
       </form>
       <p className="text-red mt-3 ml-2">{searchError}</p>
 
@@ -68,7 +81,11 @@ export default function ArabicSearchTool() {
           <Image src="/Spinner.gif" alt="loading" width={100} height={100} />
         </div>
       ) : word && wordData ? (
-        <Result wordData={wordData} />
+        direction === "arToEn" ? (
+          <ArtoEnResult wordData={wordData as ArtoEnType} />
+        ) : (
+          <EntoArResult wordData={wordData as EnToArType} />
+        )
       ) : (
         <div className="flex flex-col justify-center items-center w-full h-80">
           <p className="text-2xl text-purple">Nothing to show yet.</p>

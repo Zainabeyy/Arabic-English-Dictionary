@@ -36,22 +36,36 @@ body {
 
 button,
 input {
-  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-purple;
+  @apply focus:outline-none;
+}
+
+button.themeSwitcher, .selectFontButton {
+  @apply focus-visible:ring-2 focus-visible:ring-purple transition-shadow;
 }
 
 input:-webkit-autofill {
   box-shadow: none !important;
 }
 
-
 .fontList li {
   @apply px-4 py-3 min-w-44 hover:text-purple cursor-pointer bg-white dark:bg-dark4 focus:outline-none focus-visible:text-purple;
 }
 
 .searchInput {
-  @apply hover:ring-2 hover:ring-purple w-full py-5 px-6 bg-gray1 dark:bg-dark3 rounded-xl text-2xl placeholder:text-dark2 dark:placeholder:text-white focus:border-purple;
+  @apply w-full py-5 pr-6 pl-4  text-2xl placeholder:text-xl placeholder:text-dark2 dark:placeholder:text-white;
+}
+
+form {
+  @apply hover:ring-2 hover:ring-purple focus-within:ring-2 focus-within:ring-purple;
 }
 
 .line {
   @apply flex-1 h-0.5 bg-gray2 dark:bg-dark1;
+}
+
+.title{
+  @apply text-lg font-bold mb-2;
+}
+.discription{
+  @apply ml-2 text-2xl font-normal;
 }

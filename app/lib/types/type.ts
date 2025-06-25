@@ -3,8 +3,8 @@ export interface Example {
   english: string;
 }
 
-export interface WordDataType {
-  searchWithHarakat:string;
+export interface ArtoEnType {
+  searchWithHarakat: string;
   translation: string;
   gender: string;
   root: string;
@@ -17,16 +17,19 @@ export interface WordDataType {
   relatedWords: string[];
 }
 
-export interface EngToArType {
-  searchWithHarakat:string;
-  translation: string;
-  gender: string;
-  root: string;
-  rootExplanation: string;
+export interface EnToArType {
+  englishWord: string;
+  arabicTranslation: string;
+  genderForms?: {
+    masculine: string;
+    feminine: string;
+  };
   type: {
     arabic: string;
     english: string;
   };
+  root: string;
+  rootExplanation: string;
+  relatedRoots: string[];
   examples: Example[];
-  relatedWords: string[];
 }

@@ -30,7 +30,7 @@ export default function ThemeSwitcher() {
     <div className="flex items-center gap-3">
       <motion.button
         onClick={toggleTheme}
-        className={`transition-colors duration-300 w-11 h-6 px-1 py-1.5 rounded-full flex items-center ${
+        className={`themeSwitcher transition-colors duration-300 w-11 h-6 px-1 py-1.5 rounded-full flex items-center ${
           dark ? "bg-gray3 justify-start" : "bg-purple justify-end"
         }`}
         role="switch"

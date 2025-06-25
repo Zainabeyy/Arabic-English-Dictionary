@@ -89,7 +89,7 @@ export default function SelectFont() {
     <div className="relative">
       <button
         ref={buttonRef}
-        className="text-lg font-bold dark:text-white flex items-center gap-2 p-1"
+        className="text-lg font-bold dark:text-white flex items-center gap-2 p-1 selectFontButton rounded-lg overflow-hidden"
         onClick={() => setIsOpen(!isOpen)}
         onKeyDown={handleKeyDown}
         aria-haspopup="listbox"

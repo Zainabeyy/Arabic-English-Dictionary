@@ -1,17 +1,18 @@
-import { WordDataType } from "@/app/lib/types/type";
+import { EnToArType } from "@/app/lib/types/type";
 import React from "react";
 
-export default function Result({ wordData }: { wordData: WordDataType }) {
+export default function EntoArResult({ wordData }: { wordData: EnToArType }) {
+  console.log(wordData);
   return (
     <section>
-      <div className="mt-16 mb-11">
+      <div className="mt-16 mb-11 text-right">
         <h1
-          className="text-[4rem] font-medium text-dark2 dark:text-white text-right w-full"
+          className="text-[4rem] font-medium text-dark2 dark:text-white w-full"
           lang="ar"
         >
-          {wordData.searchWithHarakat}
+          {wordData.arabicTranslation}
         </h1>
-        <p className="text-purple text-right">
+        <p className="text-purple">
           ({wordData.type.english}){" "}
           <span className="text-xl" lang="ar">
             {wordData.type.arabic}
@@ -21,14 +22,13 @@ export default function Result({ wordData }: { wordData: WordDataType }) {
 
       <div className="line" />
       <div className="my-10">
-        <p className="text-xl font-bold mb-2">
-          Meaning:{" "}
-          <span className="text-lg capitalize font-normal">
-            {wordData.translation}
-          </span>
+        <p className="title">
+          Masculine:{" "}
+          <span className="description">{wordData.genderForms?.masculine}</span>
         </p>
-        <p className="text-xl font-bold">
-          Gender: <span className="text-lg font-normal">{wordData.gender}</span>
+        <p className="title">
+          Feminine:{" "}
+          <span className="description">{wordData.genderForms?.feminine}</span>
         </p>
       </div>
 
@@ -46,7 +46,7 @@ export default function Result({ wordData }: { wordData: WordDataType }) {
         </div>
         <div className="text-xl mt-4">
           <p className="text-gray3 text-lg">Word with same Root:</p>
-          <p className="text-purple">{wordData.relatedWords.join(", ")}</p>
+          <p className="text-purple">{wordData.relatedRoots.join(", ")}</p>
         </div>
       </div>
 
