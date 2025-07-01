@@ -89,7 +89,7 @@ export default function SelectFont() {
     <div className="relative">
       <button
         ref={buttonRef}
-        className="text-lg font-bold dark:text-white flex items-center gap-2 p-1 selectFontButton rounded-lg overflow-hidden"
+        className="text-base sm:text-lg font-bold dark:text-white flex items-center gap-2 p-1 selectFontButton rounded-lg overflow-hidden"
         onClick={() => setIsOpen(!isOpen)}
         onKeyDown={handleKeyDown}
         aria-haspopup="listbox"
@@ -107,7 +107,7 @@ export default function SelectFont() {
         {isOpen && (
           <motion.ul
             ref={listRef}
-            className="absolute mt-1 top-9 z-50 right-2 text-lg rounded-xl overflow-hidden shadow-custom dark:shadow-purple fontList"
+            className="absolute mt-1 top-9 z-50 right-2 text-base sm:text-lg rounded-xl overflow-hidden shadow-custom dark:shadow-purple fontList"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

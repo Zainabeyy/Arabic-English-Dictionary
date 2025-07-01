@@ -31,7 +31,7 @@
 
 body {
   font-family: var(--font-inter-sans);
-  @apply py-8 px-12 flex justify-center bg-white dark:text-white text-dark2 dark:bg-dark4 transition-colors duration-300;
+  @apply py-8 px-7 sm:px-12 flex justify-center bg-white dark:text-white text-dark2 dark:bg-dark4 transition-colors duration-300;
 }
 
 button,
@@ -52,7 +52,7 @@ input:-webkit-autofill {
 }
 
 .searchInput {
-  @apply w-full py-5 pr-6 pl-4  text-2xl placeholder:text-xl placeholder:text-dark2 dark:placeholder:text-white;
+  @apply w-full py-3 sm:py-5 pr-5 sm:pr-6 pl-3 sm:pl-4 text-base sm:text-2xl placeholder:text-xs sm:placeholder:text-xl placeholder:text-dark2 dark:placeholder:text-white;
 }
 
 form {
@@ -64,8 +64,8 @@ form {
 }
 
 .title{
-  @apply text-lg font-bold mb-2;
+  @apply text-base sm:text-lg font-bold mb-2;
 }
 .discription{
-  @apply ml-2 text-2xl font-normal;
+  @apply ml-2 text-xl sm:text-2xl font-normal;
 }

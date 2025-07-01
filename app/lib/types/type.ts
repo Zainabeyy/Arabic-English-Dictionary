@@ -33,3 +33,12 @@ export interface EnToArType {
   relatedRoots: string[];
   examples: Example[];
 }
+
+export interface SearchWordType {
+  (word: string): void;
+}
+
+export type RootWordsType = {
+  relatedWords: string[];
+  searchWord: SearchWordType;
+};
