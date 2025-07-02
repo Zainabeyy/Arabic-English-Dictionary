@@ -17,14 +17,14 @@ export default function EntoArResult({
         <WordSpeech word={wordData.arabicTranslation} />
         <div className="mt-16 mb-11 text-right">
           <h1
-            className="text-5xl sm:text-[4rem] font-medium text-dark2 dark:text-white w-full"
+            className="mainWord"
             lang="ar"
           >
             {wordData.arabicTranslation}
           </h1>
-          <p className="text-purple">
+          <p className="wordType">
             ({wordData.type.english}){" "}
-            <span className="text-xl" lang="ar">
+            <span lang="ar">
               {wordData.type.arabic}
             </span>
           </p>
@@ -45,13 +45,13 @@ export default function EntoArResult({
 
       <div className="line" />
       <div className="my-10">
-        <p className="text-lg sm:text-xl font-bold mb-7" lang="ar">
+        <p className="textMedium mb-7" lang="ar">
           Root Word:{" "}
           <span className="text-base sm:text-lg text-right font-normal">
             {wordData.root}
           </span>
         </p>
-        <div className="text-lg">
+        <div className="text-base sm:text-lg">
           <p className="text-gray3">Root Word Explanation:</p>
           <p>{wordData.rootExplanation}</p>
         </div>
@@ -67,7 +67,7 @@ export default function EntoArResult({
         <ul className="list-disc list-inside mr-10">
           {wordData.examples.map((example, index) => (
             <li key={index} className="my-5 text-base sm:text-lg">
-              <span className="text-lg sm:text-2xl font-arabic-naskh" lang="ar">
+              <span className="textLarge font-arabic-naskh" lang="ar">
                 {example.arabic}
               </span>
               <span className="block ml-5 mt-1">{example.english}</span>

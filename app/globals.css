@@ -43,24 +43,24 @@ button.themeSwitcher, .selectFontButton {
   @apply focus-visible:ring-2 focus-visible:ring-purple transition-shadow;
 }
 
-input:-webkit-autofill {
-  box-shadow: none !important;
-}
-
 .fontList li {
   @apply px-4 py-3 min-w-44 hover:text-purple cursor-pointer bg-white dark:bg-dark4 focus:outline-none focus-visible:text-purple;
 }
 
 .searchInput {
-  @apply w-full py-3 sm:py-5 pr-5 sm:pr-6 pl-3 sm:pl-4 text-base sm:text-2xl placeholder:text-xs sm:placeholder:text-xl placeholder:text-dark2 dark:placeholder:text-white;
+  @apply w-full py-3 sm:py-5 pr-5 sm:pr-6 pl-3 sm:pl-4 text-lg sm:text-2xl placeholder:text-xs sm:placeholder:text-xl placeholder:text-dark2 dark:placeholder:text-white;
 }
 
 form {
-  @apply hover:ring-2 hover:ring-purple focus-within:ring-2 focus-within:ring-purple;
+  @apply transition duration-300 hover:ring-2 hover:ring-purple focus-within:ring-2 focus-within:ring-purple;
 }
 
 .line {
   @apply flex-1 h-0.5 bg-gray2 dark:bg-dark1;
+}
+
+.mainWord{
+  @apply text-5xl sm:text-[4rem] font-medium text-dark2 dark:text-white w-full;
 }
 
 .title{
@@ -68,4 +68,19 @@ form {
 }
 .discription{
   @apply ml-2 text-xl sm:text-2xl font-normal;
+}
+
+p.wordType{
+ @apply text-purple text-sm sm:text-base;
+}
+.wordType span{
+  @apply text-lg sm:text-xl;
+}
+
+.textMedium{
+  @apply text-lg sm:text-xl font-bold;
+}
+
+.textLarge{
+  @apply text-lg sm:text-2xl;
 }

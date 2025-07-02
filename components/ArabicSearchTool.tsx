@@ -4,7 +4,6 @@ import { Search } from "lucide-react";
 import React from "react";
 import ArtoEnResult from "./ArtoEnResult";
 import { ArtoEnType, EnToArType } from "@/app/lib/types/type";
-import Image from "next/image";
 import EntoArResult from "./EntoArResult";
 
 export default function ArabicSearchTool() {
@@ -92,7 +91,7 @@ export default function ArabicSearchTool() {
           <div className="flex justify-center items-center w-full h-80">
             <img src="/Spinner.gif" alt="loading" width={100} height={100} />
           </div>
-        ) : word && wordData ? (
+        ) : wordData ? (
           direction === "arToEn" ? (
             <ArtoEnResult
               wordData={wordData as ArtoEnType}
@@ -103,7 +102,7 @@ export default function ArabicSearchTool() {
           )
         ) : (
           <div className="flex flex-col justify-center items-center w-full h-80">
-            <p className="text-lg sm:text-2xl text-purple">Nothing to show yet.</p>
+            <p className="textLarge text-purple">Nothing to show yet.</p>
             <p className="text-green mt-2 text-sm sm:text-base">
               Enter an Arabic word to get started!
             </p>
