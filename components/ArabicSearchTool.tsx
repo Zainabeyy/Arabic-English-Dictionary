@@ -8,8 +8,8 @@ import EntoArResult from "./EntoArResult";
 
 export default function ArabicSearchTool() {
   const [wordData, setWordData] = React.useState<
-    ArtoEnType | EnToArType | null
-  >(null);
+    ArtoEnType | EnToArType | string
+  >("");
   const [word, setWord] = React.useState("");
   const [direction, setDirection] = React.useState("arToEn");
   const [searchError, setSearchError] = React.useState("");
@@ -102,9 +102,9 @@ export default function ArabicSearchTool() {
           )
         ) : (
           <div className="flex flex-col justify-center items-center w-full h-80">
-            <p className="textLarge text-purple">Nothing to show yet.</p>
+            <p className="text-lg sm:text-2xl text-purple">Nothing to show yet.</p>
             <p className="text-green mt-2 text-sm sm:text-base">
-              Enter an Arabic word to get started!
+              Enter an Arabic or English word to get started!
             </p>
           </div>
         )}

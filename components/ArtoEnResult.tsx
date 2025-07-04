@@ -7,9 +7,12 @@ export default function Result({
   wordData,
   searchWord,
 }: {
-  wordData: ArtoEnType;
+  wordData: ArtoEnType | string;
   searchWord: SearchWordType;
 }) {
+  if(typeof wordData === "string")
+    return <p className="text-center mt-16 text-xl text-purple">{wordData}</p>;
+  else
   return (
     <section>
       <div className="flex justify-between items-center">
@@ -32,29 +35,29 @@ export default function Result({
 
       <div className="line" />
       <div className="my-10">
-        <p className="textMedium mb-2">
+        <p className="title mb-2">
           Meaning:{" "}
-          <span className="text-base sm:text-lg capitalize font-normal">
+          <span className="description capitalize">
             {wordData.translation}
           </span>
         </p>
-        <p className="textMedium">
-          Gender: <span className="text-lg font-normal">{wordData.gender}</span>
+        <p className="title">
+          Gender: <span className="description">{wordData.gender}</span>
         </p>
       </div>
 
       <div className="line" />
       <div className="my-10">
-        <p className="text-xl font-bold mb-7" lang="ar">
+        <p className="title mb-7" lang="ar">
           Root Word:{" "}
-          <span className="text-lg text-right font-normal">
+          <span className="description text-right">
             {wordData.root}
           </span>
         </p>
-        <div className="text-lg">
-          <p className="text-gray3">Root Word Explanation:</p>
-          <p>{wordData.rootExplanation}</p>
-        </div>
+        <p className="title">
+          Root Word Explanation:
+          <span className="description">{wordData.rootExplanation}</span>
+        </p>
         <RootRelatedWords
           relatedWords={wordData.relatedWords}
           searchWord={searchWord}
@@ -63,11 +66,11 @@ export default function Result({
 
       <div className="line" />
       <div>
-        <h2 className="textLarge font-bold my-10">Examples</h2>
+        <h2 className="title my-10">Examples</h2>
         <ul className="list-disc list-inside mr-10">
           {wordData.examples.map((example, index) => (
             <li key={index} className="my-5 text-base sm:text-lg">
-              <span className="textLarge font-arabic-naskh" lang="ar">
+              <span className="arabicParaText font-arabic-naskh" lang="ar">
                 {example.arabic}
               </span>
               <span className="block ml-5 mt-1">{example.english}</span>

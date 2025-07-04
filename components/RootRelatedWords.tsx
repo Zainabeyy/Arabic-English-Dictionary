@@ -3,8 +3,8 @@ import React from "react";
 
 export default function RootRelatedWords({ relatedWords, searchWord }:RootWordsType) {
   return (
-    <div className="text-xl mt-4">
-      <p className="text-gray3 text-lg">Word with same Root:</p>
+    <div className="arabicParaText mt-4">
+      <p className="title">Word with same Root:</p>
       {relatedWords.map((word, index) => (
         <button
           key={index}

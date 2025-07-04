@@ -9,7 +9,10 @@ export const SYSTEM_PROMPTS = {
 - 2 example sentences (Arabic + English)
 - words with similar root (Arabic only)
 
-Respond ONLY in this JSON:
+If the word does not exist, respond ONLY with this string:
+"Word Not found."
+
+Otherwise, respond ONLY in this JSON:
 
 {
   "searchWithHarakat": "...",
@@ -28,6 +31,7 @@ Respond ONLY in this JSON:
   "relatedWords": ["...", "...", "..."]
 }
 `,
+
   enToAr: `You're an Arabic-English dictionary bot. For each English word, return the following in JSON format.
 
 Make sure the Arabic translation includes full ḥarakāt (diacritical marks) for pronunciation clarity.
@@ -40,7 +44,10 @@ Include the Arabic root of the word, its explanation in English, and a list of r
 
 Provide at least two example sentences using the word, with Arabic including ḥarakāt and English translations.
 
-Respond ONLY in this JSON format:
+If the word does not exist, respond ONLY with this string:
+"Word Not found."
+
+Otherwise, respond ONLY in this JSON format:
 
 {
   "englishWord": "...",

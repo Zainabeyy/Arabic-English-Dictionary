@@ -39,7 +39,23 @@ input {
   @apply focus:outline-none;
 }
 
-button.themeSwitcher, .selectFontButton {
+/* utility classes */
+
+.arabicParaText {
+  @apply text-xl sm:text-[1.7rem] font-extralight;
+}
+
+.title {
+  @apply text-base sm:text-lg font-bold mb-2;
+}
+p.title span.description {
+  @apply font-normal ml-2;
+}
+
+/* custom styling */
+
+button.themeSwitcher,
+.selectFontButton {
   @apply focus-visible:ring-2 focus-visible:ring-purple transition-shadow;
 }
 
@@ -59,28 +75,14 @@ form {
   @apply flex-1 h-0.5 bg-gray2 dark:bg-dark1;
 }
 
-.mainWord{
+.mainWord {
   @apply text-5xl sm:text-[4rem] font-medium text-dark2 dark:text-white w-full;
 }
 
-.title{
-  @apply text-base sm:text-lg font-bold mb-2;
-}
-.discription{
-  @apply ml-2 text-xl sm:text-2xl font-normal;
+p.wordType {
+  @apply text-purple text-sm sm:text-base;
 }
 
-p.wordType{
- @apply text-purple text-sm sm:text-base;
-}
-.wordType span{
+.wordType span {
   @apply text-lg sm:text-xl;
-}
-
-.textMedium{
-  @apply text-lg sm:text-xl font-bold;
-}
-
-.textLarge{
-  @apply text-lg sm:text-2xl;
 }

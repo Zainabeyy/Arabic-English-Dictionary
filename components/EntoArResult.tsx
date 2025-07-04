@@ -35,26 +35,26 @@ export default function EntoArResult({
       <div className="my-10">
         <p className="title">
           Masculine:{" "}
-          <span className="description">{wordData.genderForms?.masculine}</span>
+          <span className="arabicParaText">{wordData.genderForms?.masculine}</span>
         </p>
         <p className="title">
           Feminine:{" "}
-          <span className="description">{wordData.genderForms?.feminine}</span>
+          <span className="arabicParaText">{wordData.genderForms?.feminine}</span>
         </p>
       </div>
 
       <div className="line" />
       <div className="my-10">
-        <p className="textMedium mb-7" lang="ar">
+        <p className="title mb-7" lang="ar">
           Root Word:{" "}
-          <span className="text-base sm:text-lg text-right font-normal">
+          <span className="arabicParaText text-right">
             {wordData.root}
           </span>
         </p>
-        <div className="text-base sm:text-lg">
-          <p className="text-gray3">Root Word Explanation:</p>
-          <p>{wordData.rootExplanation}</p>
-        </div>
+        <p className="title">
+          Root Word Explanation:
+          <span >{wordData.rootExplanation}</span>
+        </p>
         <RootRelatedWords
           relatedWords={wordData.relatedRoots}
           searchWord={searchWord}
@@ -63,11 +63,11 @@ export default function EntoArResult({
 
       <div className="line" />
       <div>
-        <h2 className="text-2xl font-bold my-10">Examples</h2>
+        <h2 className="title font-bold my-10">Examples</h2>
         <ul className="list-disc list-inside mr-10">
           {wordData.examples.map((example, index) => (
             <li key={index} className="my-5 text-base sm:text-lg">
-              <span className="textLarge font-arabic-naskh" lang="ar">
+              <span className="arabicParaText font-arabic-naskh" lang="ar">
                 {example.arabic}
               </span>
               <span className="block ml-5 mt-1">{example.english}</span>
