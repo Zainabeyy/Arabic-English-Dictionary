@@ -3,15 +3,20 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme inline {
-  --color-dark1: #3a3a3a;
-  --color-dark2: #2d2d2d;
-  --color-dark3: #1f1f1f;
-  --color-dark4: #050505;
-  --color-gray1: #f4f4f4;
-  --color-gray2: #e9e9e9;
-  --color-gray3: #757575;
-  --color-purple: #a445ed;
-  --color-red: #ff5252;
+  --color-dark1: hsl(0, 0%, 5%);
+  --color-dark2: hsl(0, 0%, 10%);
+  --color-dark3: hsl(0, 0%, 15%);
+  --color-gray1: hsl(0, 0%, 95%);
+  --color-gray2: hsl(0, 0%, 70%);
+  --color-gray3: hsl(0, 0%, 30%);
+  --color-white1: hsl(0, 0%, 95%);
+  --color-primary: hsl(274, 68%, 61%);
+  --color-primary-dark: hsl(274, 67%, 81%);
+  --color-primary-light: hsl(274, 68%, 34%);
+  --color-secondary: hsl(5, 38%, 69%);
+  --color-secondary-light: hsl(5, 38%, 36%);
+  --color-secondary-dark: hsl(5, 38%, 69%);
+  --color-red: #d32f2f;
   --color-green: #00b36b;
 
   --font-inter-sans: "Inter", sans-serif;
@@ -19,6 +24,7 @@
   --font-arabic-traditional: "Scheherazade New", serif;
 
   --shadow-custom: 0 0px 10px var(--tw-shadow-color, rgba(0, 0, 0, 0.1));
+  --shadow-customlg: 0 0px 20px var(--tw-shadow-color, rgba(0, 0, 0, 0.175));
 }
 
 :root {
@@ -31,16 +37,20 @@
 
 body {
   font-family: var(--font-inter-sans);
-  @apply py-8 px-7 sm:px-12 flex justify-center bg-white dark:text-white text-dark2 dark:bg-dark4 transition-colors duration-300;
+  @apply flex justify-center bg-white dark:text-gray1 text-dark1 dark:bg-dark1 transition-colors duration-300;
 }
 
 button,
-input {
-  @apply focus:outline-none;
+input,
+.linkFocus {
+  @apply focus:outline-none focus:ring-1 hover:ring-1 ring-primary ring-offset-1 transition duration-300;
 }
 
 /* utility classes */
 
+.primaryGradient {
+  @apply bg-gradient-to-br from-secondary to-primary;
+}
 .arabicParaText {
   @apply text-xl sm:text-[1.7rem] font-extralight;
 }
@@ -52,23 +62,23 @@ p.title span.description {
   @apply font-normal ml-2;
 }
 
+input.authInput {
+  @apply w-full flex-1 block text-sm border-2 dark:placeholder:text-gray2 border-gray2 rounded-2xl px-3.5 py-2.5 mt-1.5;
+}
+
 /* custom styling */
 
-button.themeSwitcher,
-.selectFontButton {
-  @apply focus-visible:ring-2 focus-visible:ring-purple transition-shadow;
+.fontBox::before{
+  content:"";
+  @apply absolute h-full w-full bg-gradient-to-bl from-secondary to-primary border-r-inherit -z-[2] p-2 blur-md;
 }
 
 .fontList li {
-  @apply px-4 py-3 min-w-44 hover:text-purple cursor-pointer bg-white dark:bg-dark4 focus:outline-none focus-visible:text-purple;
+  @apply px-4 py-3 min-w-44 hover:text-primary-light dark:hover:text-primary-dark cursor-pointer bg-white dark:bg-dark1 focus:outline-none focus-visible:text-primary-light dark:focus-visible:text-primary-dark;
 }
 
 .searchInput {
-  @apply w-full py-3 sm:py-5 pr-5 sm:pr-6 pl-3 sm:pl-4 text-lg sm:text-2xl placeholder:text-xs sm:placeholder:text-xl placeholder:text-dark2 dark:placeholder:text-white;
-}
-
-form {
-  @apply transition duration-300 hover:ring-2 hover:ring-purple focus-within:ring-2 focus-within:ring-purple;
+  @apply w-full py-3 sm:py-5 pr-5 sm:pr-6 pl-8.5 sm:pl-13 text-lg sm:text-2xl placeholder:text-xs sm:placeholder:text-xl placeholder:text-dark2 dark:placeholder:text-gray2 bg-gray1 dark:bg-dark2 rounded-2xl overflow-hidden;
 }
 
 .line {
@@ -80,7 +90,7 @@ form {
 }
 
 p.wordType {
-  @apply text-purple text-sm sm:text-base;
+  @apply text-primary-light dark:text-primary-dark text-sm sm:text-base;
 }
 
 .wordType span {

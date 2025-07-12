@@ -8,7 +8,7 @@ export default function SelectFont() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedOption, setSelectedOption] = React.useState("Modern Font");
   const fonts = ["Modern Font", "Traditional Font"];
-  const listRef = useRef<HTMLUListElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   // -- initial font setup
@@ -44,7 +44,6 @@ export default function SelectFont() {
       root.style.setProperty("--font-arabic-selected", "var(--font-sans)");
     }
   }
-
 
   // -- keyboard navigation
 
@@ -83,13 +82,33 @@ export default function SelectFont() {
     });
   }
 
+  // closes on clicking outside the container
+
+  React.useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        listRef.current &&
+        !listRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   // -- main component
 
   return (
     <div className="relative">
       <button
         ref={buttonRef}
-        className="text-base sm:text-lg font-bold dark:text-white flex items-center gap-2 p-1 selectFontButton rounded-lg overflow-hidden"
+        className="text-base sm:text-lg font-bold dark:text-gray1 flex items-center gap-2 p-1 selectFontButton rounded-lg overflow-hidden outline-none border-none"
         onClick={() => setIsOpen(!isOpen)}
         onKeyDown={handleKeyDown}
         aria-haspopup="listbox"
@@ -105,29 +124,31 @@ export default function SelectFont() {
       </button>
       <AnimatePresence>
         {isOpen && (
-          <motion.ul
+          <motion.div
             ref={listRef}
-            className="absolute mt-1 top-9 z-50 right-2 text-base sm:text-lg rounded-xl overflow-hidden shadow-custom dark:shadow-purple fontList"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
+            className="fontBox absolute mt-1 top-9 z-50 right-2 flex justify-center items-center"
             role="listbox"
             onBlur={handleBlur}
           >
-            {fonts.map((font, index) => (
-              <li
-                key={index}
-                onClick={() => handleSelectedFont(font)}
-                onKeyDown={(event) => handleListKeyDown(event, font)}
-                tabIndex={0}
-                role="option"
-                aria-selected={font === selectedOption}
-              >
-                {font}
-              </li>
-            ))}
-          </motion.ul>
+            <ul className="text-base sm:text-lg rounded-xl overflow-hidden fontList">
+              {fonts.map((font, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleSelectedFont(font)}
+                  onKeyDown={(event) => handleListKeyDown(event, font)}
+                  tabIndex={0}
+                  role="option"
+                  aria-selected={font === selectedOption}
+                >
+                  {font}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

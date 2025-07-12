@@ -8,13 +8,13 @@ export default function RootRelatedWords({ relatedWords, searchWord }:RootWordsT
       {relatedWords.map((word, index) => (
         <button
           key={index}
-          className="text-purple hover:underline mr-2 curosr-pointer"
+          className="text-primary-light dark:text-primary-dark hover:underline mr-2 curosr-pointer"
           onClick={() => {
             searchWord(word);
           }}
           aria-label={`Search for related word ${word}`}
         >
-          {word}
+          ,{word}
         </button>
       ))}
     </div>

@@ -62,15 +62,7 @@ export default function ArabicSearchTool() {
 
   return (
     <div>
-      <form
-        onSubmit={handleSubmit}
-        className={`mt-12 flex rounded-2xl overflow-hidden bg-gray1 dark:bg-dark3 ${
-          searchError && "ring-2 ring-red"
-        }`}
-      >
-        <button type="submit" className="ml-4" aria-label="Search">
-          <Search size={28} className="size-5 sm:size-7" />
-        </button>
+      <form onSubmit={handleSubmit} className={`mt-12 relative`}>
         <input
           type="text"
           aria-label="Search Arabic or English word"
@@ -79,10 +71,17 @@ export default function ArabicSearchTool() {
           lang="ar"
           autoComplete="off"
           dir="auto"
-          className="searchInput"
+          className={`searchInput ${searchError && "ring-2 ring-red"}`}
           value={word}
           onChange={(e) => setWord(e.target.value)}
         />
+        <button
+          type="submit"
+          className="absolute top-1/2 -translate-y-1/2 left-3 sm:left-4 hover:ring-0 focus:ring-0"
+          aria-label="Search"
+        >
+          <Search size={28} className="size-4 sm:size-7" color="#838383" />
+        </button>
       </form>
       <p className="text-red mt-3 ml-2">{searchError}</p>
 
@@ -98,12 +97,17 @@ export default function ArabicSearchTool() {
               searchWord={searchWord}
             />
           ) : (
-            <EntoArResult wordData={wordData as EnToArType} searchWord={searchWord}/>
+            <EntoArResult
+              wordData={wordData as EnToArType}
+              searchWord={searchWord}
+            />
           )
         ) : (
           <div className="flex flex-col justify-center items-center w-full h-80">
-            <p className="text-lg sm:text-2xl text-purple">Nothing to show yet.</p>
-            <p className="text-green mt-2 text-sm sm:text-base">
+            <p className="text-lg sm:text-2xl text-primary-light dark:text-primary-dark">
+              Nothing to show yet.
+            </p>
+            <p className="text-secondary-light dark:text-secondary-dark mt-2 text-sm sm:text-base">
               Enter an Arabic or English word to get started!
             </p>
           </div>

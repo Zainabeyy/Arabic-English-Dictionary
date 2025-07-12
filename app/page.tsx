@@ -5,9 +5,9 @@ import { BookOpen } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="max-w-3xl flex-1">
+    <div className="max-w-3xl flex-1 my-8 mx-7 sm:mx-12">
       <nav className="flex-1 flex justify-between">
-        <BookOpen size={32} className="sm:size-11" color="#838383" />
+        <BookOpen size={32} className="sm:size-11" color="hsl(0,0%,70%)" />
         <div className="flex items-end sm:items-center gap-5 sm:gap-7 flex-col sm:flex-row">
           <SelectFont />
           <span className="text-lg sm:text-xl hidden sm:inline">|</span>

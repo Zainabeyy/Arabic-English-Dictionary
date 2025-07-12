@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Scheherazade_New, Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
+import { Providers } from "@/components/Providers";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -30,11 +31,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${interSans.variable} ${scheherazadeNew.variable} ${notoSans.variable} antialiased`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
