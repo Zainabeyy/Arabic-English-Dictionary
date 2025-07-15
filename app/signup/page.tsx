@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { signInWithGoogle, signUpWithEmail } from "../lib/auth";
+import RiveBird from "@/components/RiveBird";
 
 export default function SignUp() {
   const router = useRouter();
@@ -162,13 +163,7 @@ export default function SignUp() {
           {error && <p className="text-sm text-red mt-2">{error}</p>}
         </section>
         <section className="hidden primaryGradient relative sm:flex justify-center items-center">
-          <Image
-            src="/chick.png"
-            alt="signup"
-            width={500}
-            height={500}
-            className="w-full"
-          />
+          <RiveBird/>
         </section>
       </div>
     </main>

@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface Example {
   arabic: string;
   english: string;
@@ -42,3 +44,10 @@ export type RootWordsType = {
   relatedWords: string[];
   searchWord: SearchWordType;
 };
+
+export type NavItemProps ={
+  link?: string;
+  label: string;
+  icon: React.ElementType;
+  open: boolean;
+}

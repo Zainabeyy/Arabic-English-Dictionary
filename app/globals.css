@@ -37,13 +37,13 @@
 
 body {
   font-family: var(--font-inter-sans);
-  @apply flex justify-center bg-white dark:text-gray1 text-dark1 dark:bg-dark1 transition-colors duration-300;
+  @apply bg-white dark:text-gray1 text-dark1 dark:bg-dark1 transition-colors duration-300;
 }
 
 button,
 input,
 .linkFocus {
-  @apply focus:outline-none focus:ring-1 hover:ring-1 ring-primary ring-offset-1 transition duration-300;
+  @apply focus:outline-none focus:ring-1 hover:text-secondary ring-primary ring-offset-1 transition duration-300;
 }
 
 /* utility classes */
@@ -78,7 +78,7 @@ input.authInput {
 }
 
 .searchInput {
-  @apply w-full py-3 sm:py-5 pr-5 sm:pr-6 pl-8.5 sm:pl-13 text-lg sm:text-2xl placeholder:text-xs sm:placeholder:text-xl placeholder:text-dark2 dark:placeholder:text-gray2 bg-gray1 dark:bg-dark2 rounded-2xl overflow-hidden;
+  @apply w-full py-3 sm:py-4 md:py-5 pr-5 sm:pr-6 pl-8.5 sm:pl-10 md:pl-13 text-lg sm:text-xl md:text-2xl placeholder:text-xs sm:placeholder:text-lg md:placeholder:text-xl placeholder:text-dark2 dark:placeholder:text-gray2 bg-gray1 dark:bg-dark2 rounded-2xl overflow-hidden;
 }
 
 .line {

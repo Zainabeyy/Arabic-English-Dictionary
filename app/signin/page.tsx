@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { signInWithEmail, signInWithGoogle } from "../lib/auth";
+import RiveBird from "@/components/RiveBird";
 
 export default function Signin() {
   const router = useRouter();
@@ -157,7 +158,9 @@ export default function Signin() {
           </div>
           {error && <p className="text-sm text-red mt-2">{error}</p>}
         </section>
-        <section className="hidden sm:block primaryGradient"></section>
+        <section className="hidden sm:block primaryGradient">
+          <RiveBird />
+        </section>
       </div>
     </main>
   );

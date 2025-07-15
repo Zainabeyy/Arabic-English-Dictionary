@@ -29,7 +29,7 @@ export default function Result({
               </p>
             </div>
             <button>
-              <Bookmark size={32} color="#a445ed" stroke-width={1.5}/>
+              <Bookmark size={32} color="#a445ed" strokeWidth={1.5}/>
             </button>
           </div>
         </div>

@@ -77,10 +77,10 @@ export default function ArabicSearchTool() {
         />
         <button
           type="submit"
-          className="absolute top-1/2 -translate-y-1/2 left-3 sm:left-4 hover:ring-0 focus:ring-0"
+          className="absolute top-1/2 -translate-y-1/2 left-3 sm:left-4 text-gray2"
           aria-label="Search"
         >
-          <Search size={28} className="size-4 sm:size-7" color="#838383" />
+          <Search size={28} className="size-4 sm:size-7" />
         </button>
       </form>
       <p className="text-red mt-3 ml-2">{searchError}</p>
