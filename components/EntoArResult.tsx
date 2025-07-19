@@ -2,6 +2,7 @@ import { EnToArType, SearchWordType } from "@/app/lib/types/type";
 import React from "react";
 import WordSpeech from "./WordSpeech";
 import RootRelatedWords from "./RootRelatedWords";
+import BookmarkBtn from "./BookmarkBtn";
 
 export default function EntoArResult({
   wordData,
@@ -11,20 +12,27 @@ export default function EntoArResult({
   searchWord: SearchWordType;
 }) {
   if (typeof wordData === "string")
-    return <p className="text-center mt-16 text-xl text-primary-light dark:text-primary-dark">{wordData}</p>;
+    return (
+      <p className="text-center mt-16 text-xl text-primary-light dark:text-primary-dark">
+        {wordData}
+      </p>
+    );
   else
     return (
       <section>
         <div className="flex justify-between items-center">
           <WordSpeech word={wordData.arabicTranslation} />
-          <div className="mt-16 mb-11 text-right">
-            <h1 className="mainWord" lang="ar">
-              {wordData.arabicTranslation}
-            </h1>
-            <p className="wordType">
-              ({wordData.type.english}){" "}
-              <span lang="ar">{wordData.type.arabic}</span>
-            </p>
+          <div className="flex justify-end items-center gap-6 mt-16 mb-11">
+            <div className="mt-16 mb-11 text-right">
+              <h1 className="mainWord" lang="ar">
+                {wordData.arabicTranslation}
+              </h1>
+              <p className="wordType">
+                ({wordData.type.english}){" "}
+                <span lang="ar">{wordData.type.arabic}</span>
+              </p>
+            </div>
+            <BookmarkBtn wordData={wordData} />
           </div>
         </div>
 

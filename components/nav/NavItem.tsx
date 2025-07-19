@@ -20,7 +20,6 @@ export default function NavItem(item: NavItemProps) {
       <motion.div
         initial={{ width: "1.25rem" }}
         animate={{ width: item.open ? "1.75rem" : "1.5rem" }}
-        className="flex justify-center"
       >
         <Icon size={28} />
       </motion.div>

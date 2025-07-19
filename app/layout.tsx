@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Scheherazade_New, Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
-import { Providers } from "@/components/Providers";
+import { DarkModeProviders } from "@/components/DarkModeProviders";
+import { AuthProvider } from "./lib/auth/AuthProvider";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -35,7 +36,9 @@ export default function RootLayout({
       <body
         className={`${interSans.variable} ${scheherazadeNew.variable} ${notoSans.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <DarkModeProviders>
+          <AuthProvider>{children}</AuthProvider>
+        </DarkModeProviders>
       </body>
     </html>
   );

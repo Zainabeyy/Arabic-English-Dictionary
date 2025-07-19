@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { signInWithGoogle, signUpWithEmail } from "../lib/auth";
+import { signInWithGoogle, signUpWithEmail } from "../lib/auth/auth";
 import RiveBird from "@/components/RiveBird";
 
 export default function SignUp() {
@@ -163,7 +163,7 @@ export default function SignUp() {
           {error && <p className="text-sm text-red mt-2">{error}</p>}
         </section>
         <section className="hidden primaryGradient relative sm:flex justify-center items-center">
-          <RiveBird/>
+          <RiveBird />
         </section>
       </div>
     </main>

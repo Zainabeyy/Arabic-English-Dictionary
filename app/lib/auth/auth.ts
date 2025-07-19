@@ -1,14 +1,14 @@
 import {
   createUserWithEmailAndPassword,
   fetchSignInMethodsForEmail,
-  GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
   User,
 } from "firebase/auth";
-import { auth } from "./firebaseConfig";
+
 import { FirebaseError } from "firebase/app";
+import { auth, googleProvider } from "../firebaseConfig";
 
 type AuthResponse =
   | { success: true; user: User }
@@ -85,8 +85,7 @@ export async function signInWithEmail(email: string, password: string) {
 
 export async function signInWithGoogle(): Promise<AuthResponse> {
   try {
-    const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(auth, provider);
+    const result = await signInWithPopup(auth, googleProvider);
     return { success: true, user: result.user };
   } catch (err) {
     if (err instanceof FirebaseError) {

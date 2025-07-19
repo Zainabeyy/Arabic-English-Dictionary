@@ -130,7 +130,7 @@ export default function SelectFont() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="fontBox absolute mt-1 top-9 z-50 right-2 flex justify-center items-center"
+            className="fontBox absolute mt-4 top-9 z-50 right-2 flex justify-center items-center"
             role="listbox"
             onBlur={handleBlur}
           >

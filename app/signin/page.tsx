@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { signInWithEmail, signInWithGoogle } from "../lib/auth";
+import { signInWithEmail, signInWithGoogle } from "../lib/auth/auth";
 import RiveBird from "@/components/RiveBird";
 
 export default function Signin() {
@@ -112,12 +112,12 @@ export default function Signin() {
               <button
                 type="button"
                 onClick={togglePassword}
-                className="absolute right-4 top-1/2"
+                className="absolute right-4 top-1/2 text-dark2 dark:text-dark3"
               >
                 {showPassword ? (
-                  <EyeOff size="20" color="hsl(0,0%,15%)" />
+                  <EyeOff size="20" />
                 ) : (
-                  <Eye size="20" color="hsl(0,0%,15%)" />
+                  <Eye size="20" />
                 )}
               </button>
               <p className="text-xs text-red mt-2 text-right">{passwordErr}</p>

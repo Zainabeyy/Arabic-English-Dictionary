@@ -1,7 +1,7 @@
 import { ThemeProvider } from "next-themes";
 import React from "react";
 
-export function Providers({children}:{children:React.ReactNode}){
+export function DarkModeProviders({children}:{children:React.ReactNode}){
     return(
        <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>{children}</ThemeProvider>
     )

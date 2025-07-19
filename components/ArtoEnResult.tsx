@@ -2,7 +2,7 @@ import { ArtoEnType, SearchWordType } from "@/app/lib/types/type";
 import React from "react";
 import WordSpeech from "./WordSpeech";
 import RootRelatedWords from "./RootRelatedWords";
-import { Bookmark } from "lucide-react";
+import BookmarkBtn from "./BookmarkBtn";
 
 export default function Result({
   wordData,
@@ -12,13 +12,17 @@ export default function Result({
   searchWord: SearchWordType;
 }) {
   if (typeof wordData === "string")
-    return <p className="text-center mt-16 text-xl text-primaryLight dark:textPrimaryDark">{wordData}</p>;
+    return (
+      <p className="text-center mt-16 text-xl text-primaryLight dark:textPrimaryDark">
+        {wordData}
+      </p>
+    );
   else
     return (
       <section>
         <div className="flex justify-between items-center">
           <WordSpeech word={wordData.searchWithHarakat} />
-          <div className="flex justify-center items-center gap-6 mt-16 mb-11">
+          <div className="flex justify-end items-center gap-6 mt-16 mb-11">
             <div className=" text-right">
               <h1 className="mainWord" lang="ar">
                 {wordData.searchWithHarakat}
@@ -28,9 +32,7 @@ export default function Result({
                 <span lang="ar">{wordData.type.arabic}</span>
               </p>
             </div>
-            <button>
-              <Bookmark size={32} color="#a445ed" strokeWidth={1.5}/>
-            </button>
+            <BookmarkBtn wordData={wordData} />
           </div>
         </div>
 

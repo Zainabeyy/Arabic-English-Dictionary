@@ -1,3 +1,4 @@
+import { User } from "firebase/auth";
 import React from "react";
 
 export interface Example {
@@ -45,9 +46,25 @@ export type RootWordsType = {
   searchWord: SearchWordType;
 };
 
-export type NavItemProps ={
+export type BookmarkDataType = {
+  id: string;
+  arWord: string;
+  enWord: string;
+  wordType: string;
+  rootWord: string;
+  rootWordExplanation: string;
+  rootRelatedWords: string[];
+  examples: Example[];
+};
+
+export type NavItemProps = {
   link?: string;
   label: string;
   icon: React.ElementType;
   open: boolean;
-}
+};
+
+export type AuthContextType = {
+  user: User | null;
+  loading: boolean;
+};
