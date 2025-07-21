@@ -13,7 +13,7 @@ export default function Result({
 }) {
   if (typeof wordData === "string")
     return (
-      <p className="text-center mt-16 text-xl text-primaryLight dark:textPrimaryDark">
+      <p className="text-center mt-16 text-xl text-primary-light dark:text-primary-dark">
         {wordData}
       </p>
     );

@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 import { auth, db } from "./firebaseConfig";
 import { ArtoEnType, EnToArType } from "./types/type";
 
@@ -73,4 +73,25 @@ export function removeBookmarkWithId(id:string){
   const bookmarkRef = collection(db, "users", uid, "bookmarkWords");
   const docRef = doc(bookmarkRef, id);
   deleteDoc(docRef);
+}
+
+export async function getBookmarkById(id: string) {
+  const user = auth.currentUser;
+  if (!user) return null;
+
+  const uid = user.uid;
+  const docRef = doc(db, "users", uid, "bookmarkWords", id);
+
+  try {
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return { id: docSnap.id, ...docSnap.data() };
+    } else {
+      console.log("No such document!");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching bookmark by ID:", error);
+    return null;
+  }
 }

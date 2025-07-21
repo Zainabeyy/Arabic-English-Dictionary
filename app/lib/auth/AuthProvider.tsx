@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "@/app/lib/firebaseConfig";
 import { AuthContextType } from "../types/type";
 
-
-
-const AuthContext = createContext<AuthContextType>({ user: null, loading: true });
+const AuthContext = createContext<AuthContextType>({
+  user: null,
+  loading: true,
+});
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -26,7 +27,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     <AuthContext.Provider value={{ user, loading }}>
       {loading ? (
         <div className="w-screen h-screen flex items-center justify-center">
-          <img src="/spinner.gif" alt="loading" />
+          Loading
         </div>
       ) : (
         children
