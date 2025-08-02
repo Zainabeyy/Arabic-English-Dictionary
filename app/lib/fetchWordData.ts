@@ -17,7 +17,7 @@ export async function fetchWordData(query: string) {
 
     return { data, direction, error: null };
   } catch (e) {
-    console.error("Fetch error:", e);
+    console.log("Fetch error:", e);
     return { error: "Something went wrong.", data: null, direction: null };
   }
 }
