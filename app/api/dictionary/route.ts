@@ -8,9 +8,9 @@ const endpoint = "https://models.github.ai/inference";
 const model = "openai/gpt-4.1";
 
 export async function POST(req: NextRequest) {
-  const { userMessage,direction } = await req.json();
-  if(!userMessage || !direction) {
- console.error("Missing userMessage or direction.");
+  const { userMessage, direction } = await req.json();
+  if (!userMessage || !direction) {
+    console.error("Missing userMessage or direction.");
   }
 
   if (!token) {
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
 
   const client = ModelClient(endpoint, new AzureKeyCredential(token!));
 
-   const systemPrompt = SYSTEM_PROMPTS[direction as keyof typeof SYSTEM_PROMPTS];
+  const systemPrompt = SYSTEM_PROMPTS[direction as keyof typeof SYSTEM_PROMPTS];
 
   try {
     const response = await client.path("/chat/completions").post({

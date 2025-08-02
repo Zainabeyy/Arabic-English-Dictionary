@@ -1,3 +1,5 @@
+'use client';
+
 import { addBookmark, removeBookmark } from "@/app/lib/Bookmark";
 import { ArtoEnType, EnToArType } from "@/app/lib/types/type";
 import { Bookmark } from "lucide-react";

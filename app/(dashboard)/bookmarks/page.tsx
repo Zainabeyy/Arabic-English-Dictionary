@@ -18,7 +18,7 @@ export default function BookmarkPage() {
     if (!user) return;
 
     const uid = user.uid;
-    setLoading(true);
+    setLoading(true); 
 
     const unsubscribe = onSnapshot(
       collection(db, "users", uid, "bookmarkWords"),

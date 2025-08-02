@@ -2,15 +2,28 @@
 
 import { auth } from "@/app/lib/firebaseConfig";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, LogOut } from "lucide-react";
 import { useAuth } from "@/app/lib/auth/AuthProvider";
+import { AnimatePresence } from "framer-motion";
 
 export default function UserMenu() {
-   const { user } = useAuth();
+  const { user } = useAuth();
+  const contRef = useRef<HTMLDivElement | null>(null);
   const [openMenu, setOpenMenu] = React.useState(false);
 
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (contRef.current && !contRef.current.contains(event.target as Node)) {
+        setOpenMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
 
   // --- created avatar ---
   function getInitials(name: string) {
@@ -55,21 +68,32 @@ export default function UserMenu() {
       <button onClick={() => setOpenMenu(!openMenu)}>
         {openMenu ? <ChevronUp /> : <ChevronDown />}
       </button>
-      {openMenu && (
-        <div className="gradientShadow absolute top-10 right-0 bg-white dark:bg-dark2 min-w-64 p-5 mt-5 rounded-2xl shadow-md">
-          <div className="flex items-center w-full gap-4">
-            {userAvatar}
-            <div>
-              <p>{user.displayName}</p>
-              <p className="truncate max-w-[16ch] inline-block">{user.email}</p>
-            </div>
+      <AnimatePresence>
+        {openMenu && (
+          <div
+          ref={contRef}
+            className="gradientShadow absolute top-10 right-0 bg-white dark:bg-dark2 min-w-64 p-5 mt-5 rounded-2xl shadow-md"
+          >
+              <div className="flex items-center w-full gap-4">
+                {userAvatar}
+                <div>
+                  <p>{user.displayName}</p>
+                  <p className="truncate max-w-[16ch] inline-block">
+                    {user.email}
+                  </p>
+                </div>
+              </div>
+              <button
+                className="mt-4 authLink flex items-center gap-2"
+                onClick={() => auth.signOut()}
+                tabIndex={0}
+              >
+                Log Out
+                <LogOut size={18} />
+              </button>
           </div>
-          <button className="mt-4 authLink" onClick={() => auth.signOut()} tabIndex={0}>
-            Log Out
-          </button>
-        </div>
-      )}
-      <div></div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

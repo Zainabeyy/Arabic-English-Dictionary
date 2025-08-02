@@ -1,4 +1,4 @@
-import { EnToArType, SearchWordType } from "@/app/lib/types/type";
+import { EnToArType } from "@/app/lib/types/type";
 import React from "react";
 import WordSpeech from "./WordSpeech";
 import RootRelatedWords from "./RootRelatedWords";
@@ -6,10 +6,8 @@ import BookmarkBtn from "./BookmarkBtn";
 
 export default function EntoArResult({
   wordData,
-  searchWord,
 }: {
   wordData: EnToArType | string;
-  searchWord: SearchWordType;
 }) {
   if (typeof wordData === "string")
     return (
@@ -34,6 +32,12 @@ export default function EntoArResult({
             </div>
             <BookmarkBtn wordData={wordData} />
           </div>
+        </div>
+
+         <div className="my-10">
+          <p className="text-4xl mb-7 capitalize" lang="ar">
+            {wordData.englishWord}
+          </p>
         </div>
 
         <div className="line" />
@@ -64,7 +68,6 @@ export default function EntoArResult({
           </p>
           <RootRelatedWords
             relatedWords={wordData.relatedRoots}
-            searchWord={searchWord}
           />
         </div>
 

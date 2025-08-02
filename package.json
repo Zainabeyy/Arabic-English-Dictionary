@@ -13,6 +13,7 @@
     "@azure/core-auth": "latest",
     "@azure/core-sse": "latest",
     "@rive-app/react-canvas": "^4.21.4",
+    "axios": "^1.10.0",
     "firebase": "^11.10.0",
     "framer-motion": "^12.16.0",
     "lucide-react": "^0.513.0",

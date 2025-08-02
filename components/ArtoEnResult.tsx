@@ -1,4 +1,4 @@
-import { ArtoEnType, SearchWordType } from "@/app/lib/types/type";
+import { ArtoEnType } from "@/app/lib/types/type";
 import React from "react";
 import WordSpeech from "./WordSpeech";
 import RootRelatedWords from "./RootRelatedWords";
@@ -6,10 +6,8 @@ import BookmarkBtn from "./BookmarkBtn";
 
 export default function Result({
   wordData,
-  searchWord,
 }: {
   wordData: ArtoEnType | string;
-  searchWord: SearchWordType;
 }) {
   if (typeof wordData === "string")
     return (
@@ -61,7 +59,6 @@ export default function Result({
           </p>
           <RootRelatedWords
             relatedWords={wordData.relatedWords}
-            searchWord={searchWord}
           />
         </div>
 

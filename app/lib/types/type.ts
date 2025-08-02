@@ -71,3 +71,9 @@ export type AuthContextType = {
   user: User | null;
   loading: boolean;
 };
+
+export type SearchParamsProp = {
+  searchParams: {
+    query?: string;
+  };
+};
