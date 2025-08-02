@@ -7,8 +7,8 @@ import RiveBird from "@/components/RiveBird";
 import Form from "next/form";
 import { fetchWordData } from "../lib/fetchWordData";
 
-export default async function Home({ searchParams }: SearchParamsProp) {
-  const query = (await searchParams?.query?.trim()) || "";
+export default async function Home({ searchParams }:SearchParamsProp) {
+  const query = ((await searchParams)?.query?.trim()) || "";
   let wordData: ArtoEnType | EnToArType | string = "";
   let direction = null;
   let error = "";

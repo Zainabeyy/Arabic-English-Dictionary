@@ -73,7 +73,5 @@ export type AuthContextType = {
 };
 
 export type SearchParamsProp = {
-  searchParams: {
-    query?: string;
-  };
+    searchParams:Promise<{query: string | undefined;}>
 };
