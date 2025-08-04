@@ -11,6 +11,7 @@ export async function fetchWordData(query: string) {
     ? `${process.env.NEXT_PUBLIC_SITE_URL}/api/dictionary`
     : "http://localhost:3000/api/dictionary";
   try {
+    console.log("Fetching url:", url);
     const res = await fetch(url, {
       method: "POST",
       headers: {

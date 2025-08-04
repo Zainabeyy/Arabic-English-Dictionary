@@ -42,7 +42,7 @@ export default async function Home({ searchParams }: SearchParamsProp) {
         </button>
       </Form>
 
-      {error && <p className="text-red mt-3 ml-2">{error}</p>}
+      {error && <p className="text-red mt-3 ml-2">{error.message}</p>}
 
       <div aria-live="polite" role="region" className="mt-8">
         {query ? (
