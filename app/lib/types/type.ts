@@ -17,7 +17,7 @@ export interface ArtoEnType {
     english: string;
   };
   examples: Example[];
-  relatedWords: string[];
+  relatedWords: rootRelatedWordType[];
 }
 
 export interface EnToArType {
@@ -33,7 +33,7 @@ export interface EnToArType {
   };
   root: string;
   rootExplanation: string;
-  relatedRoots: string[];
+  relatedRoots: rootRelatedWordType[];
   examples: Example[];
 }
 
