@@ -3,23 +3,21 @@ import { Search } from "lucide-react";
 import React from "react";
 import ArtoEnResult from "@/components/ArtoEnResult";
 import EntoArResult from "@/components/EntoArResult";
-import RiveBird from "@/components/RiveBird";
 import Form from "next/form";
 import { fetchWordData } from "../lib/fetchWordData";
 
-export default async function Home({ searchParams }:SearchParamsProp) {
-  const query = ((await searchParams)?.query?.trim()) || "";
+export default async function Home({ searchParams }: SearchParamsProp) {
+  const query = (await searchParams)?.query?.trim() || "";
   let wordData: ArtoEnType | EnToArType | string = "";
   let direction = null;
   let error = "";
 
-if (query) {
+  if (query) {
     const result = await fetchWordData(query);
     wordData = result.data || "";
     direction = result.direction;
     error = result.error || "";
   }
-
 
   return (
     <div className="max-w-3xl w-full my-8 mx-7 sm:mx-12">
@@ -35,12 +33,13 @@ if (query) {
           dir="auto"
           className={`searchInput ${error && "ring-2 ring-red"}`}
         />
-        <div
+        <button
+          type="submit"
           className="absolute top-1/2 -translate-y-1/2 left-3 sm:left-4 text-gray2"
           aria-label="Search"
         >
           <Search size={28} className="size-4 sm:size-7" />
-        </div>
+        </button>
       </Form>
 
       {error && <p className="text-red mt-3 ml-2">{error}</p>}
@@ -50,13 +49,12 @@ if (query) {
           wordData === "Word Not found." ? (
             <p className="text-red">Word not found.</p>
           ) : direction === "arToEn" ? (
-            <ArtoEnResult wordData={wordData as ArtoEnType}/>
+            <ArtoEnResult wordData={wordData as ArtoEnType} />
           ) : (
             <EntoArResult wordData={wordData as EnToArType} />
           )
         ) : (
-          <div className="flex flex-col justify-center items-center w-full mt-10">
-            <RiveBird />
+          <div className="flex flex-col justify-center items-center w-full mt-14">
             <p className="text-lg sm:text-2xl text-primary-light dark:text-primary-dark">
               Nothing to show yet.
             </p>

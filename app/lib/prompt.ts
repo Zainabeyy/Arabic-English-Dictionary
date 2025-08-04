@@ -7,10 +7,12 @@ export const SYSTEM_PROMPTS = {
 - type (Arabic: اِسم/فعل/حرف and English: noun/verb/particle)
 - word with ḥarakāt
 - 2 example sentences (Arabic + English)
-- words with similar root (Arabic only)
+- words with similar root (Arabic +  English Translation)
 
 If the word does not exist, respond ONLY with this string:
 "Word Not found."
+
+⚠️ Do not use Markdown, backticks, or code block formatting. Just return plain JSON.
 
 Otherwise, respond ONLY in this JSON:
 
@@ -28,7 +30,7 @@ Otherwise, respond ONLY in this JSON:
     { "arabic": "...", "english": "..." },
     { "arabic": "...", "english": "..." }
   ],
-  "relatedWords": ["...", "...", "..."]
+  "relatedWords": [{arabic:"...",english:"..."},{arabic:"...",english:"..."},{arabic:"...",english:"..."}]
 }
 `,
 
@@ -47,25 +49,24 @@ Provide at least two example sentences using the word, with Arabic including ḥ
 If the word does not exist, respond ONLY with this string:
 "Word Not found."
 
+⚠️ Do not use Markdown, backticks, or code block formatting. Just return plain JSON.
+
 Otherwise, respond ONLY in this JSON format:
 
 {
   "englishWord": "...",
-  "arabicTranslation": "...", // with ḥarakāt
+  "arabicTranslation": "...",
   "genderForms": {
-    "masculine": "...", // Arabic with ḥarakāt
-    "feminine": "..."   // Arabic with ḥarakāt
+    "masculine": "...",
+    "feminine": "..."
   },
   "type": {
-    "arabic": "...", // اِسْم / فِعْل / حَرْف
-    "english": "..." // noun / verb / particle
+    "arabic": "...",
+    "english": "..."
   },
-  "root": "...", // Arabic root (e.g. ك ت ب)
-  "rootExplanation": "...", // Explanation in English
-  "relatedRoots": [
-    "...", // related word 1 (Arabic with ḥarakāt)
-    "..."  // related word 2 (Arabic with ḥarakāt)
-  ],
+  "root": "...",
+  "rootExplanation": "...",
+  "relatedRoots":  [{arabic:"...",english:"..."},{arabic:"...",english:"..."},{arabic:"...",english:"..."}],
   "examples": [
     { "arabic": "...", "english": "..." },
     { "arabic": "...", "english": "..." }

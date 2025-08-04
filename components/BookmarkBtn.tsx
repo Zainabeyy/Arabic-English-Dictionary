@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { addBookmark, removeBookmark } from "@/app/lib/Bookmark";
 import { ArtoEnType, EnToArType } from "@/app/lib/types/type";
@@ -33,7 +33,10 @@ export default function BookmarkBtn({
   }
 
   return (
-    <button onClick={bookmarked ? handleRemoveBookmark : handleAddBookmark}>
+    <button
+      onClick={bookmarked ? handleRemoveBookmark : handleAddBookmark}
+      aria-label={bookmarked ? "Remove from bookmarks" : "Add to bookmarks"}
+    >
       <Bookmark
         size={34}
         color="#a445ed"

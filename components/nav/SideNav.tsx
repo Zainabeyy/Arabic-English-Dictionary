@@ -40,6 +40,7 @@ export default function SideNav() {
     >
       <button
         onClick={() => setOpen(!open)}
+        aria-label={open ? "Close sidebar" : "Open sidebar"}
         className={`fixed z-100 top-5 text-gray2 block md:hidden ${
           open ? "mx-0" : "mx-4"
         }`}
@@ -55,13 +56,14 @@ export default function SideNav() {
         <button
           onClick={() => setOpen(!open)}
           className="absolute -right-8 top-5 text-gray2 hidden md:block"
+          aria-label={open ? "Close sidebar" : "Open sidebar"}
         >
           {open ? <PanelLeftClose /> : <PanelRightClose />}
         </button>
 
-        <nav className={`my-10 flex-col gap-4 ${
-          open ? "flex" : "hidden md:flex"
-        }`}>
+        <nav
+          className={`my-10 flex-col gap-4 ${open ? "flex" : "hidden md:flex"}`}
+        >
           {navItems.map((item, index) => {
             return (
               <NavItem

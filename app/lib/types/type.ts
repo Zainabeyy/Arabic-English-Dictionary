@@ -42,8 +42,13 @@ export interface SearchWordType {
 }
 
 export type RootWordsType = {
-  relatedWords: string[];
+  relatedWords: rootRelatedWordType[];
   searchWord?: SearchWordType;
+};
+
+export type rootRelatedWordType = {
+  arabic: string;
+  english: string;
 };
 
 export type BookmarkDataType = {
@@ -56,7 +61,7 @@ export type BookmarkDataType = {
   };
   rootWord: string;
   rootWordExplanation: string;
-  rootRelatedWords: string[];
+  rootRelatedWords: rootRelatedWordType[];
   examples: Example[];
 };
 
