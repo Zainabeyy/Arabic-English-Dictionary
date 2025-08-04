@@ -5,11 +5,7 @@ export async function fetchWordData(query: string) {
   const isArabic = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(query);
   const direction = isArabic ? "arToEn" : "enToAr";
 
-  const isServer = typeof window === "undefined";
-
-  const url = !isServer
-    ? `${process.env.NEXT_PUBLIC_SITE_URL}/api/dictionary`
-    : "http://localhost:3000/api/dictionary";
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/api/dictionary`;;
   try {
     console.log("Fetching url:", url);
     const res = await fetch(url, {
