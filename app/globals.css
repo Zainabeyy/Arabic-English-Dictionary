@@ -55,7 +55,7 @@ input,
   @apply text-xl sm:text-[1.7rem] font-extralight;
 }
 .line {
-  @apply flex-1 h-0.5 bg-gray2 dark:bg-dark1;
+  @apply flex-1 h-0.5 bg-gray2;
 }
 
 .title {

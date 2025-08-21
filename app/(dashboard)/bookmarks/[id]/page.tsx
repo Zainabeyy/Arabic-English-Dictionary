@@ -27,7 +27,7 @@ export default function BookmarkWordPage() {
       <main className="max-w-3xl w-full my-16 mx-7 sm:mx-12">
         <section className="flex justify-between items-center">
           <WordSpeech word={bookmark.arWord} />
-          <div className="flex justify-end items-center gap-6 mt-16 mb-11">
+          <header className="flex justify-end items-center gap-6 mt-16 mb-11">
             <div className="mt-16 mb-11 text-right">
               <h1 className="mainWord" lang="ar">
                 {bookmark.arWord}
@@ -38,7 +38,7 @@ export default function BookmarkWordPage() {
               </p>
             </div>
             {/* <BookmarkBtn bookmark={bookmark} /> */}
-          </div>
+          </header>
         </section>
 
         <div className="my-10">
