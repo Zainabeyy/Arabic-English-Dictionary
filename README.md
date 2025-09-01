@@ -1,6 +1,6 @@
 # 📘 Arabic ↔ English Dictionary
 
-A simple, fast, and smart dictionary that helps you translate words between **Arabic** and **English** — with pronunciation, roots, examples, and more.
+A simple, fast, and smart dictionary for translating between Arabic and English — with pronunciation, roots, examples, and more.
 
 [🔗 Live Website](https://arabic-english-dictionary.vercel.app/)
 
@@ -10,6 +10,11 @@ A simple, fast, and smart dictionary that helps you translate words between **Ar
 
 - 🔁 Translate **English ⇄ Arabic**
 - 🧠 Uses **OpenAI** to fetch smart data: root words, types, examples, etc.
+- Can bookmark data.
+- Can sign up, log in, and log out using email & password or Google authentication.
+- Can toggle dark and light mode also it checks the default system color without flickering.
+- An animated owl follows your cursor around 🦉.
+- Can select fonts for Arabic words.
 - 🔉 Click a button to **hear Arabic pronunciation**
 - 🪄 Clean UI built with **Next.js**, **Tailwind CSS**, and a touch of **Framer Motion**
 - 📱 Fully responsive — works on all screen sizes
@@ -60,15 +65,14 @@ Each word comes with:
 
 # ⚙️ Built With
 
- - Next.js – React framework
+- **Next.js** – React framework  
+- **Tailwind CSS** – Utility-first styling  
+- **Framer Motion** – Smooth animations  
+- **OpenAI** – AI-powered word data  
+- **Lucide Icons** – Clean, modern icons  
+- **Rive** – Animated graphics  
+- **Firebase** – Authentication & database  
 
- - Tailwind CSS – Utility-first CSS
-
- - Framer Motion – Smooth animations
-
-- OpenAI – AI-powered word data
-
- - Lucide Icons – Clean, modern icons
 
 
 # 👩‍💻 Made By
