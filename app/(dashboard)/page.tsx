@@ -1,10 +1,9 @@
 import { ArtoEnType, EnToArType, SearchParamsProp } from "@/app/lib/types/type";
-import { Search } from "lucide-react";
 import React from "react";
 import ArtoEnResult from "@/components/ArtoEnResult";
 import EntoArResult from "@/components/EntoArResult";
-import Form from "next/form";
 import { fetchWordData } from "../lib/fetchWordData";
+import SearchForm from "@/components/SearchForm";
 
 export default async function Home({ searchParams }: SearchParamsProp) {
   const query = (await searchParams)?.query?.trim() || "";
@@ -21,26 +20,7 @@ export default async function Home({ searchParams }: SearchParamsProp) {
 
   return (
     <div className="max-w-3xl w-full my-8 mx-7 sm:mx-12">
-      <Form action="/" className="mt-12 relative">
-        <input
-          type="text"
-          aria-label="Search Arabic or English word"
-          placeholder="Search Arabic or English word"
-          name="query"
-          defaultValue={query}
-          lang="ar"
-          autoComplete="off"
-          dir="auto"
-          className={`searchInput ${error && "ring-2 ring-red"}`}
-        />
-        <button
-          type="submit"
-          className="absolute top-1/2 -translate-y-1/2 left-3 sm:left-4 text-gray2"
-          aria-label="Search"
-        >
-          <Search size={28} className="size-4 sm:size-7" />
-        </button>
-      </Form>
+      <SearchForm defaultQuery={query} />
 
       {error && <p className="text-red mt-3 ml-2">{error}</p>}
 
