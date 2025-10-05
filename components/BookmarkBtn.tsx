@@ -22,7 +22,7 @@ export default function BookmarkBtn({
   }, []);
 
   async function handleAddBookmark() {
-    if (!user) return; // do nothing if not logged in
+    if (!user) return;
     try {
       await addBookmark(wordData);
       setBookmarked(true);
@@ -33,7 +33,7 @@ export default function BookmarkBtn({
   }
 
   async function handleRemoveBookmark() {
-    if (!user) return; // do nothing if not logged in
+    if (!user) return;
     try {
       await removeBookmark(wordData);
       setBookmarked(false);
