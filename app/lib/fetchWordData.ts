@@ -5,10 +5,9 @@ export async function fetchWordData(query: string) {
   const isArabic = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(query);
   const direction = isArabic ? "arToEn" : "enToAr";
 
-  const url = `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/api/dictionary`;;
+
   try {
-    console.log("Fetching url:", url);
-    const res = await fetch(url, {
+    const res = await fetch("https://arabic-english-dictionary.vercel.app/api/dictionary", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,6 +16,7 @@ export async function fetchWordData(query: string) {
     });
 
     const result = await res.json();
+
     if (!result.reply) {
       console.error("API error or empty reply:", result.error || result);
       return {
@@ -25,14 +25,24 @@ export async function fetchWordData(query: string) {
         direction,
       };
     }
-    const data =
-      result.reply === "Word Not found."
-        ? "Word Not found."
-        : JSON.parse(result.reply);
+
+    // Fix: safely parse reply
+    let data;
+    if (result.reply === "Word Not found.") {
+      data = "Word Not found.";
+    } else if (typeof result.reply === "string") {
+      try {
+        data = JSON.parse(result.reply);
+      } catch {
+        data = result.reply;
+      }
+    } else {
+      data = result.reply;
+    }
 
     return { data, direction, error: null };
   } catch (e) {
-    console.log("Fetch error:", e);
+    console.error("Fetch error:", e);
     return { error: "Something went wrong.", data: null, direction: null };
   }
 }

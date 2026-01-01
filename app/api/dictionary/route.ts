@@ -8,7 +8,9 @@ const endpoint = "https://models.github.ai/inference";
 const model = "openai/gpt-4o";
 
 export async function POST(req: NextRequest) {
+  console.log("POST request received");
   const { userMessage, direction } = await req.json();
+  console.log(userMessage, direction);
   if (!userMessage || !direction) {
     console.error("Missing userMessage or direction.");
   }
