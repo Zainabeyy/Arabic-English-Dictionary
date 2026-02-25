@@ -36,16 +36,16 @@ export default function BookmarkPage() {
       (error) => {
         console.error("Error fetching real-time bookmarks:", error);
         setLoading(false);
-      }
+      },
     );
 
     return () => unsubscribe();
   }, [user]);
 
-  // 👇 UI rendering
+  // UI rendering
   return (
-    <div className="max-w-3xl w-full my-16 mx-7 sm:mx-12">
-      <h2 className="text-4xl font-semibold mb-10">Bookmarked Words</h2>
+    <div className="mainPage">
+      <h2 className="textLg mb-10">Bookmarked Words</h2>
 
       {!user ? (
         <div>You are not logged in</div>

@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { SYSTEM_PROMPTS } from "@/app/lib/prompt";
 
-// Environment variable check
 const apiKey = process.env.GEMINI_API_KEY;
 
 export async function POST(req: NextRequest) {
@@ -27,23 +26,21 @@ export async function POST(req: NextRequest) {
     // Initialize Gemini
     const genAI = new GoogleGenerativeAI(apiKey);
 
-    // We use Gemini 1.5 Flash for speed and cost (free tier)
     const model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash",
       systemInstruction:
         SYSTEM_PROMPTS[direction as keyof typeof SYSTEM_PROMPTS],
       generationConfig: {
-        responseMimeType: "application/json", // This is the magic line
+        responseMimeType: "application/json",
       },
     });
 
-    // Forced JSON Config
     const generationConfig = {
       temperature: 1,
       topP: 0.95,
       topK: 40,
       maxOutputTokens: 8192,
-      responseMimeType: "application/json", // This ensures pure JSON output
+      responseMimeType: "application/json",
     };
 
     const result = await model.generateContent({
@@ -60,7 +57,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Since we forced JSON mode, 'reply' will be a stringified JSON object or your "Word Not found."
     return NextResponse.json({ reply });
   } catch (err) {
     console.error("Gemini API Error:", err);

@@ -45,6 +45,13 @@ input,
 .linkFocus {
   @apply focus:outline-none focus-visible:ring-1 hover:text-secondary ring-primary ring-offset-1 transition duration-300;
 }
+@utility mainPage {
+  @apply max-w-3xl w-full my-16 mx-7 sm:mx-12;
+}
+
+@utility textLg {
+  @apply text-4xl font-semibold;
+}
 
 /* utility classes */
 
@@ -73,8 +80,9 @@ input.authInput {
 
 /* --- selectFont comp styling --- */
 
-.fontBox::before,.gradientShadow::before{
-  content:"";
+.fontBox::before,
+.gradientShadow::before {
+  content: "";
   @apply absolute h-full w-full bg-gradient-to-bl from-secondary/70 to-primary/70 dark:from-secondary/100 dark:to-primary/100 border-r-inherit -z-[2] p-2 -top-0.5 -left-0.5 blur-md;
 }
 
@@ -82,13 +90,9 @@ input.authInput {
   @apply px-4 py-3 min-w-44 hover:text-primary-light dark:hover:text-primary-dark cursor-pointer bg-white dark:bg-dark1 focus:outline-none focus-visible:text-primary-light dark:focus-visible:text-primary-dark;
 }
 
-
-
 .searchInput {
   @apply w-full py-3 sm:py-4 md:py-5 pr-5 sm:pr-6 pl-8.5 sm:pl-10 md:pl-13 text-lg sm:text-xl md:text-2xl placeholder:text-xs sm:placeholder:text-lg md:placeholder:text-xl placeholder:text-dark2 dark:placeholder:text-gray2 bg-gray1 dark:bg-dark2 rounded-2xl overflow-hidden;
 }
-
-
 
 .mainWord {
   @apply text-5xl sm:text-[4rem] font-medium text-dark2 dark:text-white w-full;
@@ -102,6 +106,6 @@ p.wordType {
   @apply text-lg sm:text-xl;
 }
 
-.authLink{
+.authLink {
   @apply hover:text-secondary border-[1px] border-gray2 px-3 py-1 rounded-lg focus:border-secondary hover:border-secondary;
 }
